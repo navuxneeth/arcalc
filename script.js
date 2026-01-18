@@ -23,6 +23,11 @@ const outputSqft = document.getElementById('output-sqft');
 const outputSqm = document.getElementById('output-sqm');
 const outputCent = document.getElementById('output-cent');
 
+// Conversion constants
+const CM2_TO_SQ_FT = 0.00107639; // 1 cm² = 0.00107639 sq ft
+const CM2_TO_SQ_M = 0.0001; // 1 cm² = 0.0001 sq m
+const SQ_FT_PER_CENT = 435.6; // 1 cent = 435.6 sq ft
+
 function calculateMode1() {
     const length = parseFloat(lengthCm.value) || 0;
     const width = parseFloat(widthCm.value) || 0;
@@ -31,14 +36,9 @@ function calculateMode1() {
     const areaCm2 = length * width;
     
     // Convert to different units
-    // 1 cm² = 0.00107639 sq ft
-    const sqFt = areaCm2 * 0.00107639;
-    
-    // 1 cm² = 0.0001 sq m
-    const sqM = areaCm2 * 0.0001;
-    
-    // 1 cent = 435.6 sq ft, so sq ft to cent
-    const cent = sqFt / 435.6;
+    const sqFt = areaCm2 * CM2_TO_SQ_FT;
+    const sqM = areaCm2 * CM2_TO_SQ_M;
+    const cent = sqFt / SQ_FT_PER_CENT;
     
     // Update output with formatted values
     outputSqft.textContent = formatNumber(sqFt);
