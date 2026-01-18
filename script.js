@@ -47,11 +47,12 @@ function calculateMode1() {
 }
 
 function formatNumber(num) {
+    // Format numbers based on magnitude for optimal readability
     if (num === 0) return '0';
-    if (num < 0.01) return num.toExponential(4);
-    if (num < 1) return num.toFixed(6).replace(/\.?0+$/, '');
-    if (num < 100) return num.toFixed(4).replace(/\.?0+$/, '');
-    return num.toFixed(2).replace(/\.?0+$/, '');
+    if (num < 0.01) return num.toExponential(4); // Very small numbers: scientific notation
+    if (num < 1) return num.toFixed(6).replace(/\.?0+$/, ''); // Small decimals: up to 6 places
+    if (num < 100) return num.toFixed(4).replace(/\.?0+$/, ''); // Medium numbers: up to 4 places
+    return num.toFixed(2).replace(/\.?0+$/, ''); // Large numbers: up to 2 places
 }
 
 // Real-time calculation on input
