@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area Calculator - Real Time</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Area Calculator</h1>
+            <p class="subtitle">Real-time dimension converter</p>
+        </header>
+
+        <div class="mode-selector">
+            <button class="mode-btn active" data-mode="1">CM to SQ FT</button>
+            <button class="mode-btn" data-mode="2">Mode 2</button>
+            <button class="mode-btn" data-mode="3">Mode 3</button>
+        </div>
+
+        <div class="calculator-content">
+            <!-- Mode 1: CM to SQ FT -->
+            <div class="mode-panel active" id="mode-1">
+                <div class="input-section">
+                    <h2>Input Dimensions (cm)</h2>
+                    <div class="input-group">
+                        <label for="length-cm">Length</label>
+                        <input type="number" id="length-cm" placeholder="0" step="any" min="0">
+                        <span class="unit">cm</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="width-cm">Width</label>
+                        <input type="number" id="width-cm" placeholder="0" step="any" min="0">
+                        <span class="unit">cm</span>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>Results</h2>
+                    <div class="output-grid">
+                        <div class="output-item">
+                            <div class="output-label">Square Feet</div>
+                            <div class="output-value" id="output-sqft">0</div>
+                            <div class="output-unit">sq ft</div>
+                        </div>
+                        <div class="output-item">
+                            <div class="output-label">Square Meters</div>
+                            <div class="output-value" id="output-sqm">0</div>
+                            <div class="output-unit">sq m</div>
+                        </div>
+                        <div class="output-item">
+                            <div class="output-label">Cent</div>
+                            <div class="output-value" id="output-cent">0</div>
+                            <div class="output-unit">cent</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mode 2: Placeholder -->
+            <div class="mode-panel" id="mode-2">
+                <div class="placeholder">
+                    <p>Mode 2 - Coming Soon</p>
+                </div>
+            </div>
+
+            <!-- Mode 3: Placeholder -->
+            <div class="mode-panel" id="mode-3">
+                <div class="placeholder">
+                    <p>Mode 3 - Coming Soon</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
