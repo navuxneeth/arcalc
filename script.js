@@ -126,8 +126,8 @@ lengthCm.addEventListener('input', calculateMode1);
 widthCm.addEventListener('input', calculateMode1);
 
 function calculateMode2() {
-    const lengthCmVal = feetInchesToCm(lengthFt?.value, lengthIn?.value);
-    const widthCmVal = feetInchesToCm(widthFt?.value, widthIn?.value);
+    const lengthCmVal = feetInchesToCm(lengthFt && lengthFt.value, lengthIn && lengthIn.value);
+    const widthCmVal = feetInchesToCm(widthFt && widthFt.value, widthIn && widthIn.value);
 
     if (lengthCmDisplay2) lengthCmDisplay2.textContent = formatNumber(lengthCmVal);
     if (widthCmDisplay2) widthCmDisplay2.textContent = formatNumber(widthCmVal);
@@ -157,8 +157,8 @@ function calculateMode3(from = 'cm') {
     let widthCmVal;
 
     if (from === 'cm') {
-        lengthCmVal = sanitizeNumber(lengthCm3?.value);
-        widthCmVal = sanitizeNumber(widthCm3?.value);
+        lengthCmVal = sanitizeNumber(lengthCm3 && lengthCm3.value);
+        widthCmVal = sanitizeNumber(widthCm3 && widthCm3.value);
 
         const { feet: lf, inches: li } = cmToFeetInches(lengthCmVal);
         const { feet: wf, inches: wi } = cmToFeetInches(widthCmVal);
@@ -167,10 +167,10 @@ function calculateMode3(from = 'cm') {
         setInputValue(widthFt3, wf);
         setInputValue(widthIn3, wi);
     } else {
-        const lf = sanitizeNumber(lengthFt3?.value);
-        const li = sanitizeNumber(lengthIn3?.value);
-        const wf = sanitizeNumber(widthFt3?.value);
-        const wi = sanitizeNumber(widthIn3?.value);
+        const lf = sanitizeNumber(lengthFt3 && lengthFt3.value);
+        const li = sanitizeNumber(lengthIn3 && lengthIn3.value);
+        const wf = sanitizeNumber(widthFt3 && widthFt3.value);
+        const wi = sanitizeNumber(widthIn3 && widthIn3.value);
 
         lengthCmVal = feetInchesToCm(lf, li);
         widthCmVal = feetInchesToCm(wf, wi);
