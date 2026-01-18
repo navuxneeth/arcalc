@@ -34,6 +34,16 @@
                         <input type="number" id="width-cm" placeholder="0" step="any" min="0">
                         <span class="unit">cm</span>
                     </div>
+                    <div class="conversion-row">
+                        <div class="conversion-note">
+                            <span class="conversion-label">Length:</span>
+                            <span id="length-ftinch">0 ft 0 in</span>
+                        </div>
+                        <div class="conversion-note">
+                            <span class="conversion-label">Width:</span>
+                            <span id="width-ftinch">0 ft 0 in</span>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="output-section">
@@ -60,15 +70,138 @@
 
             <!-- Mode 2: Placeholder -->
             <div class="mode-panel" id="mode-2">
-                <div class="placeholder">
-                    <p>Mode 2 - Coming Soon</p>
+                <div class="input-section">
+                    <h2>Input Dimensions (ft / in)</h2>
+                    <div class="input-group multi">
+                        <label for="length-ft">Length</label>
+                        <div class="split-input">
+                            <input type="number" id="length-ft" placeholder="0" step="any" min="0">
+                            <span class="unit">ft</span>
+                        </div>
+                        <div class="split-input">
+                            <input type="number" id="length-in" placeholder="0" step="any" min="0">
+                            <span class="unit">in</span>
+                        </div>
+                    </div>
+                    <div class="input-group multi">
+                        <label for="width-ft">Width</label>
+                        <div class="split-input">
+                            <input type="number" id="width-ft" placeholder="0" step="any" min="0">
+                            <span class="unit">ft</span>
+                        </div>
+                        <div class="split-input">
+                            <input type="number" id="width-in" placeholder="0" step="any" min="0">
+                            <span class="unit">in</span>
+                        </div>
+                    </div>
+                    <div class="conversion-row">
+                        <div class="conversion-note">
+                            <span class="conversion-label">Length in cm:</span>
+                            <span id="length-cm-2">0</span> cm
+                        </div>
+                        <div class="conversion-note">
+                            <span class="conversion-label">Width in cm:</span>
+                            <span id="width-cm-2">0</span> cm
+                        </div>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>Results</h2>
+                    <div class="output-grid">
+                        <div class="output-item">
+                            <div class="output-label">Square Feet</div>
+                            <div class="output-value" id="output2-sqft">0</div>
+                            <div class="output-unit">sq ft</div>
+                        </div>
+                        <div class="output-item">
+                            <div class="output-label">Square Meters</div>
+                            <div class="output-value" id="output2-sqm">0</div>
+                            <div class="output-unit">sq m</div>
+                        </div>
+                        <div class="output-item">
+                            <div class="output-label">Cent</div>
+                            <div class="output-value" id="output2-cent">0</div>
+                            <div class="output-unit">cent</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- Mode 3: Placeholder -->
             <div class="mode-panel" id="mode-3">
-                <div class="placeholder">
-                    <p>Mode 3 - Coming Soon</p>
+                <div class="dual-pane">
+                    <div class="panel-block">
+                        <h2>Input in Centimeters</h2>
+                        <div class="input-group">
+                            <label for="length-cm-3">Length</label>
+                            <input type="number" id="length-cm-3" placeholder="0" step="any" min="0">
+                            <span class="unit">cm</span>
+                        </div>
+                        <div class="input-group">
+                            <label for="width-cm-3">Width</label>
+                            <input type="number" id="width-cm-3" placeholder="0" step="any" min="0">
+                            <span class="unit">cm</span>
+                        </div>
+                    </div>
+
+                    <div class="panel-block">
+                        <h2>Input in Feet / Inches</h2>
+                        <div class="input-group multi">
+                            <label for="length-ft-3">Length</label>
+                            <div class="split-input">
+                                <input type="number" id="length-ft-3" placeholder="0" step="any" min="0">
+                                <span class="unit">ft</span>
+                            </div>
+                            <div class="split-input">
+                                <input type="number" id="length-in-3" placeholder="0" step="any" min="0">
+                                <span class="unit">in</span>
+                            </div>
+                        </div>
+                        <div class="input-group multi">
+                            <label for="width-ft-3">Width</label>
+                            <div class="split-input">
+                                <input type="number" id="width-ft-3" placeholder="0" step="any" min="0">
+                                <span class="unit">ft</span>
+                            </div>
+                            <div class="split-input">
+                                <input type="number" id="width-in-3" placeholder="0" step="any" min="0">
+                                <span class="unit">in</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="conversion-row">
+                    <div class="conversion-note">
+                        <span class="conversion-label">Length:</span>
+                        <span id="length-summary-3">0 cm | 0 ft 0 in</span>
+                    </div>
+                    <div class="conversion-note">
+                        <span class="conversion-label">Width:</span>
+                        <span id="width-summary-3">0 cm | 0 ft 0 in</span>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>Results</h2>
+                    <div class="output-grid">
+                        <div class="output-item">
+                            <div class="output-label">Square Feet</div>
+                            <div class="output-value" id="output3-sqft">0</div>
+                            <div class="output-unit">sq ft</div>
+                        </div>
+                        <div class="output-item">
+                            <div class="output-label">Square Meters</div>
+                            <div class="output-value" id="output3-sqm">0</div>
+                            <div class="output-unit">sq m</div>
+                        </div>
+                        <div class="output-item">
+                            <div class="output-label">Cent</div>
+                            <div class="output-value" id="output3-cent">0</div>
+                            <div class="output-unit">cent</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
