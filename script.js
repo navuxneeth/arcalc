@@ -32,6 +32,8 @@ const widthFt = document.getElementById('width-ft');
 const widthIn = document.getElementById('width-in');
 const lengthCmDisplay2 = document.getElementById('length-cm-2');
 const widthCmDisplay2 = document.getElementById('width-cm-2');
+const lengthMDisplay2 = document.getElementById('length-m-2');
+const widthMDisplay2 = document.getElementById('width-m-2');
 const output2Sqft = document.getElementById('output2-sqft');
 const output2Sqm = document.getElementById('output2-sqm');
 const output2Cent = document.getElementById('output2-cent');
@@ -49,10 +51,20 @@ const output3Sqft = document.getElementById('output3-sqft');
 const output3Sqm = document.getElementById('output3-sqm');
 const output3Cent = document.getElementById('output3-cent');
 
+// Mode 4: Area converter
+const areaSqftInput = document.getElementById('area-sqft');
+const areaSqmInput = document.getElementById('area-sqm');
+const areaCentInput = document.getElementById('area-cent');
+const areaAcreInput = document.getElementById('area-acre');
+const output4SideFt = document.getElementById('output4-side-ft');
+const output4SideM = document.getElementById('output4-side-m');
+
 // Conversion constants
 const CM2_TO_SQ_FT = 0.00107639; // 1 cm² = 0.00107639 sq ft
 const CM2_TO_SQ_M = 0.0001; // 1 cm² = 0.0001 sq m
 const SQ_FT_PER_CENT = 435.6; // 1 cent = 435.6 sq ft
+const SQ_FT_PER_ACRE = 43560; // 1 acre = 43560 sq ft
+const SQ_FT_PER_SQ_M = 10.7639; // 1 square meter = 10.7639 sq ft
 const CM_PER_INCH = 2.54;
 const CM_PER_FOOT = CM_PER_INCH * 12;
 const INCH_DISPLAY_DECIMALS = 3;
@@ -140,6 +152,8 @@ function calculateMode2() {
     if (output2Sqft) output2Sqft.textContent = formatNumber(sqFt);
     if (output2Sqm) output2Sqm.textContent = formatNumber(sqM);
     if (output2Cent) output2Cent.textContent = formatNumber(cent);
+    if (lengthMDisplay2) lengthMDisplay2.textContent = formatNumber(lengthCmVal / 100);
+    if (widthMDisplay2) widthMDisplay2.textContent = formatNumber(widthCmVal / 100);
 }
 
 [lengthFt, lengthIn, widthFt, widthIn].forEach(input => {
@@ -205,7 +219,53 @@ function calculateMode3(from = 'cm') {
     }
 });
 
+let areaModeUpdating = false;
+function calculateMode4(from = 'sqft') {
+    if (areaModeUpdating) return;
+    areaModeUpdating = true;
+
+    let areaSqFtVal = 0;
+    if (from === 'sqft') {
+        areaSqFtVal = sanitizeNumber(areaSqftInput ? areaSqftInput.value : undefined);
+    } else if (from === 'sqm') {
+        areaSqFtVal = sanitizeNumber(areaSqmInput ? areaSqmInput.value : undefined) * SQ_FT_PER_SQ_M;
+    } else if (from === 'cent') {
+        areaSqFtVal = sanitizeNumber(areaCentInput ? areaCentInput.value : undefined) * SQ_FT_PER_CENT;
+    } else if (from === 'acre') {
+        areaSqFtVal = sanitizeNumber(areaAcreInput ? areaAcreInput.value : undefined) * SQ_FT_PER_ACRE;
+    }
+
+    const areaSqMVal = areaSqFtVal / SQ_FT_PER_SQ_M;
+    const areaCentVal = areaSqFtVal / SQ_FT_PER_CENT;
+    const areaAcreVal = areaSqFtVal / SQ_FT_PER_ACRE;
+
+    setInputValue(areaSqftInput, areaSqFtVal);
+    setInputValue(areaSqmInput, areaSqMVal);
+    setInputValue(areaCentInput, areaCentVal);
+    setInputValue(areaAcreInput, areaAcreVal);
+
+    const sideFt = Math.sqrt(areaSqFtVal);
+    const sideM = Math.sqrt(areaSqMVal);
+
+    if (output4SideFt) output4SideFt.textContent = formatNumber(sideFt);
+    if (output4SideM) output4SideM.textContent = formatNumber(sideM);
+
+    areaModeUpdating = false;
+}
+
+[areaSqftInput, areaSqmInput, areaCentInput, areaAcreInput].forEach(input => {
+    if (input) {
+        input.addEventListener('input', () => {
+            if (input === areaSqmInput) calculateMode4('sqm');
+            else if (input === areaCentInput) calculateMode4('cent');
+            else if (input === areaAcreInput) calculateMode4('acre');
+            else calculateMode4('sqft');
+        });
+    }
+});
+
 // Initialize with zeros
 calculateMode1();
 calculateMode2();
 calculateMode3();
+calculateMode4();

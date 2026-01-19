@@ -15,8 +15,9 @@
 
         <div class="mode-selector">
             <button class="mode-btn active" data-mode="1">CM to SQ FT</button>
-            <button class="mode-btn" data-mode="2">Mode 2</button>
-            <button class="mode-btn" data-mode="3">Mode 3</button>
+            <button class="mode-btn" data-mode="2">Feet/Inches to Area</button>
+            <button class="mode-btn" data-mode="3">Sync Units</button>
+            <button class="mode-btn" data-mode="4">Area Converter</button>
         </div>
 
         <div class="calculator-content">
@@ -102,6 +103,14 @@
                         <div class="conversion-note">
                             <span class="conversion-label">Width in cm:</span>
                             <span id="width-cm-2">0</span> cm
+                        </div>
+                        <div class="conversion-note">
+                            <span class="conversion-label">Length in meters:</span>
+                            <span id="length-m-2">0</span> m
+                        </div>
+                        <div class="conversion-note">
+                            <span class="conversion-label">Width in meters:</span>
+                            <span id="width-m-2">0</span> m
                         </div>
                     </div>
                 </div>
@@ -200,6 +209,50 @@
                             <div class="output-label">Cent</div>
                             <div class="output-value" id="output3-cent">0</div>
                             <div class="output-unit">cent</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mode 4: Area converter -->
+            <div class="mode-panel" id="mode-4">
+                <div class="input-section">
+                    <h2>Convert Existing Area</h2>
+                    <p class="helper-text">Enter any one value below to instantly update the others.</p>
+                    <div class="input-group">
+                        <label for="area-sqft">Square Feet</label>
+                        <input type="number" id="area-sqft" placeholder="0" step="any" min="0">
+                        <span class="unit">sq ft</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="area-sqm">Square Meters</label>
+                        <input type="number" id="area-sqm" placeholder="0" step="any" min="0">
+                        <span class="unit">sq m</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="area-cent">Cent</label>
+                        <input type="number" id="area-cent" placeholder="0" step="any" min="0">
+                        <span class="unit">cent</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="area-acre">Acres</label>
+                        <input type="number" id="area-acre" placeholder="0" step="any" min="0">
+                        <span class="unit">acre</span>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>Quick Insights</h2>
+                    <div class="output-grid">
+                        <div class="output-item">
+                            <div class="output-label">Square Plot Side</div>
+                            <div class="output-value" id="output4-side-ft">0</div>
+                            <div class="output-unit">ft</div>
+                        </div>
+                        <div class="output-item">
+                            <div class="output-label">Square Plot Side</div>
+                            <div class="output-value" id="output4-side-m">0</div>
+                            <div class="output-unit">m</div>
                         </div>
                     </div>
                 </div>
